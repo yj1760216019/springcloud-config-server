@@ -1,1 +1,23 @@
+# 指定端口号
+server:
+  port: 7014
 
+# 配置注册中心
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7011/eureka/
+
+
+
+# 配置远端git仓库
+spring:
+  application:
+    name: configserver
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/yj1760216019/springcloud-config.git
+          username: yj1760216019
+          password: "******"

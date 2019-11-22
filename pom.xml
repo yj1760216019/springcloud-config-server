@@ -5,13 +5,13 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.7.RELEASE</version>
+        <version>2.2.1.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.carlinx</groupId>
-    <artifactId>springcloud-config-server</artifactId>
+    <artifactId>springcloud-config-client</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>springcloud-config-server</name>
+    <name>springcloud-config-client</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -24,38 +24,18 @@
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
 
-        <!--作用: client中不包含tomcat依赖  所以spring容器无法创建实例-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.junit.vintage</groupId>
+                    <artifactId>junit-vintage-engine</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
-
-        <!--引入config server配置-->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-config-server</artifactId>
-        </dependency>
-
     </dependencies>
-
-    <!--指定 spring cloud 下载源和版本-->
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Finchley.SR2</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
 
     <build>
         <plugins>
